@@ -1,0 +1,25 @@
+{
+    "name": "xenomorph/xenomorph-models-communication",
+    "description": "Xenomorph Communication Models Libraries",
+    "keywords": ["php freamwork", "framework", "xenomorph", "tools", "curl", "onesignal", "notification"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mickaël POLLET",
+            "email": "mickaelpollet@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "php":">=5.5.0",
+      "xenomorph/xenomorph-system-xclass": "dev-master"
+    },
+    "autoload": {
+      "classmap": [
+        "models/",
+        "models/managers"
+      ]
+    },
+    "version": "1.0.0"
+}
