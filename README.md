@@ -3,6 +3,10 @@ Xenomorph Communication Models Libraries
 
 # Versionning
 
+v1.2.1
+- XLdapManager correction to accept XLdapConnection for any instance
+- XLdapConnection modification to have attributes, and search model
+
 v1.2.0
 - Adding of XLdap, XLdapConnection and XLdapManager
 

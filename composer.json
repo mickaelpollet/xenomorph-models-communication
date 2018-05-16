@@ -1,7 +1,17 @@
 {
     "name": "xenomorph/xenomorph-models-communication",
     "description": "Xenomorph Communication Models Libraries",
-    "keywords": ["php freamwork", "framework", "xenomorph", "tools", "curl", "onesignal", "notification"],
+    "keywords": [
+        "php freamwork",
+        "framework",
+        "xenomorph",
+        "tools",
+        "curl",
+        "onesignal",
+        "notification",
+        "mail",
+        "ldap"
+      ],
     "type": "library",
     "license": "MIT",
     "authors": [

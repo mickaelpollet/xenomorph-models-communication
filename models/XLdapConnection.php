@@ -18,11 +18,13 @@ class XLdapConnection extends XClass
 
 	// Déclaration des propriétés
   public function setClassProperties() {
-		$this->property('server',					'string');    // URL du service OneSignal à contacter
-    $this->property('port',						'string');    // Clé API de l'application OneSignal
-		$this->property('user',						'string');    // Clé API de l'application OneSignal
-		$this->property('password',				'string');    // Clé API de l'application OneSignal
-    $this->property('base',						'string');    // Segments OneSignal d'utilisateurs à contacter. Doivent être paramétrés sur OneSignal
+		$this->property('server',					'string');    // Serveur LDAP
+    $this->property('port',						'string');    // Port de communication
+		$this->property('login',					'string');    // Login de connexion
+		$this->property('password',				'string');    // Mot de passe de connexion
+    $this->property('base',						'string');    // Base de recherche LDAP
+    $this->property('attributes',			'array');     // Tableau contenant les atttributs LDAP à utiliser
+    $this->property('search',			    'string');    // Modèle de recherche
   }
 
 /**********************************************************/
