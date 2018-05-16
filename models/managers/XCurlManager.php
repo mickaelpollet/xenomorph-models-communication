@@ -1,7 +1,7 @@
 <?php
 /*************************************
  * @project: 	Xenomorph - Models - XCurlManager
- * @file:		MANAGER de la calsse XCurl
+ * @file:		XCurl CLASS MANAGER
  * @author: 	Mickaël POLLET
  *************************************/
 
@@ -9,31 +9,35 @@ class XCurlManager
 {
 
   /******************************************************/
-  /*****************     PARAMETRES     *****************/
+  /*****************     PROPERTIES     *****************/
   /******************************************************/
-  /**********************************************************/
-  /*****************     FIN PARAMETRES     *****************/
-  /**********************************************************/
-
+  /******************************************************/
+  /***************     END PROPERTIES     ***************/
+  /******************************************************/
 
   /********************************************************/
-  /*****************     CONSTRUCTEUR     *****************/
+  /*****************     CONSTRUCTOR     ******************/
   /********************************************************/
-  /************************************************************/
-  /*****************     FIN CONSTRUCTEUR     *****************/
-  /************************************************************/
+  /********************************************************/
+  /**************     END CONSTRUCTOR     *****************/
+  /********************************************************/
 
+  /***************************************************/
+  /*****************     GETTERS     *****************/
+  /***************************************************/
+  /*******************************************************/
+  /*****************     END GETTERS     *****************/
+  /*******************************************************/
 
   /***************************************************/
   /*****************     SETTERS     *****************/
   /***************************************************/
   /*******************************************************/
-  /*****************     FIN SETTERS     *****************/
+  /*****************     END SETTERS     *****************/
   /*******************************************************/
 
-
   /************************************************************/
-  /*********************     METHODES     ********************/
+  /*********************     METHODS     **********************/
   /************************************************************/
 
   public static function connect($XCurlObject)	{
@@ -49,15 +53,21 @@ class XCurlManager
       $XCurlObject->setHeader($current_header);
     }
 
+    // Mise en place des identifiants
+    $proxy_ids = "";
+    if ($XCurlObject->proxy_login() != "" && $XCurlObject->proxy_pwd() != "") {
+      $proxy_ids = $XCurlObject->proxy_login().":".$XCurlObject->proxy_pwd()."@";
+    }
+
     // Paramétrage du proxy
     if ($XCurlObject->proxy() === true) {
-      curl_setopt($CurlConnection,   CURLOPT_PROXY,            $XCurlObject->proxy_protocol()."://".$XCurlObject->proxy_login().":".$XCurlObject->proxy_pwd()."@".$XCurlObject->proxy_server().":".$XCurlObject->proxy_port());
+      curl_setopt($CurlConnection,   CURLOPT_PROXY,         $XCurlObject->proxy_protocol()."://".$proxy_ids.$XCurlObject->proxy_server().":".$XCurlObject->proxy_port());
     }
 
     // Mise en place de la connexion en méthode POST
     if ($XCurlObject->type() == 1) {
       curl_setopt($CurlConnection,  CURLOPT_POST,           true);
-      curl_setopt($CurlConnection,  CURLOPT_POSTFIELDS,       $XCurlObject->request());
+      curl_setopt($CurlConnection,  CURLOPT_POSTFIELDS,     $XCurlObject->request());
     } else {
     //  curl_setopt($CurlConnection,  CURLOPT_POST,           false);
     }
@@ -88,7 +98,7 @@ class XCurlManager
 	}
 
   /************************************************************/
-  /*******************     FIN METHODES     *******************/
+  /******************     END METHODS     *********************/
   /************************************************************/
 
 }

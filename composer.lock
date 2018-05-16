@@ -4,8 +4,74 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bfe0e452cbb0c95d72af795554c2ce3",
+    "content-hash": "48f6bf988a29af95ec5e0d4c327cae44",
     "packages": [
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "bbdfa96b95a942ca07dc9e97dd2f2901c17b08d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/bbdfa96b95a942ca07dc9e97dd2f2901c17b08d2",
+                "reference": "bbdfa96b95a942ca07dc9e97dd2f2901c17b08d2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-filter": "*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "doctrine/annotations": "1.2.*",
+                "friendsofphp/php-cs-fixer": "^2.2",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "^4.8 || ^5.7",
+                "zendframework/zend-eventmanager": "3.0.*",
+                "zendframework/zend-i18n": "2.7.3",
+                "zendframework/zend-serializer": "2.7.*"
+            },
+            "suggest": {
+                "ext-mbstring": "Needed to send email in multibyte encoding charset",
+                "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
+                "psr/log": "For optional PSR-3 debug logging",
+                "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
+                "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPMailer\\PHPMailer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2018-04-27T08:25:28+00:00"
+        },
         {
             "name": "twbs/bootstrap",
             "version": "dev-master",
@@ -63,92 +129,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mickaelpollet/xenomorph-system-core.git",
-                "reference": "716f39b7f8ac4e33c1307e534a9adab557abda93"
+                "reference": "96776c61867718e8c3e25d7ae7786af7fa2eef9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mickaelpollet/xenomorph-system-core/zipball/716f39b7f8ac4e33c1307e534a9adab557abda93",
-                "reference": "716f39b7f8ac4e33c1307e534a9adab557abda93",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.0"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mickaël POLLET",
-                    "email": "mickaelpollet@gmail.com"
-                }
-            ],
-            "description": "Xenomorph's Framework and Libraries Core",
-            "keywords": [
-                "framework",
-                "php freamwork",
-                "xenomorph"
-            ],
-            "time": "2018-04-24T06:09:06+00:00"
-        },
-        {
-            "name": "xenomorph/xenomorph-system-tools",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mickaelpollet/xenomorph-system-tools.git",
-                "reference": "d598889e3b9b015f78fa326b614b5a0eb06e12af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mickaelpollet/xenomorph-system-tools/zipball/d598889e3b9b015f78fa326b614b5a0eb06e12af",
-                "reference": "d598889e3b9b015f78fa326b614b5a0eb06e12af",
+                "url": "https://api.github.com/repos/mickaelpollet/xenomorph-system-core/zipball/96776c61867718e8c3e25d7ae7786af7fa2eef9c",
+                "reference": "96776c61867718e8c3e25d7ae7786af7fa2eef9c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.0",
-                "twbs/bootstrap": "^3.3@dev",
-                "xenomorph/xenomorph-system-core": "dev-master"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mickaël POLLET",
-                    "email": "mickaelpollet@gmail.com"
-                }
-            ],
-            "description": "System tools for Xenomorph Framework",
-            "keywords": [
-                "framework",
-                "php freamwork",
-                "tools",
-                "xenomorph"
-            ],
-            "time": "2018-04-24T06:33:09+00:00"
-        },
-        {
-            "name": "xenomorph/xenomorph-system-xclass",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mickaelpollet/xenomorph-system-xclass.git",
-                "reference": "07827a917b4978c9b2aaf5da3313518192cdb1a1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mickaelpollet/xenomorph-system-xclass/zipball/07827a917b4978c9b2aaf5da3313518192cdb1a1",
-                "reference": "07827a917b4978c9b2aaf5da3313518192cdb1a1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.0",
-                "xenomorph/xenomorph-system-tools": "dev-master"
+                "twbs/bootstrap": "^3.3@dev"
             },
             "type": "library",
             "autoload": {
@@ -166,22 +157,19 @@
                     "email": "mickaelpollet@gmail.com"
                 }
             ],
-            "description": "Mother class system",
+            "description": "Xenomorph's Framework and Libraries Core",
             "keywords": [
-                "class",
                 "framework",
                 "php freamwork",
                 "xenomorph"
             ],
-            "time": "2018-04-24T06:33:48+00:00"
+            "time": "2018-04-28T10:22:09+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "xenomorph/xenomorph-system-xclass": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
