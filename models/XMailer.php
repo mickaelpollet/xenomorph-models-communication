@@ -19,7 +19,7 @@ class XMailer extends XClass
 
   // Déclaration des propriétés
   public function setClassProperties() {
-		$this->property('author',          		'string');    // URL du service OneSignal à contacter
+		$this->property('author',          		'XUser');    // URL du service OneSignal à contacter
     $this->property('replyTo',            'string');    // Clé API de l'application OneSignal
     $this->property('signatories',        'array');    // ID de l'application OneSignal à contacter
     $this->property('recipients',         'array');     // Segments OneSignal d'utilisateurs à contacter. Doivent être paramétrés sur OneSignal
@@ -77,7 +77,7 @@ class XMailer extends XClass
 		foreach ($signatories as $signatories_key => $signatories_value) {
 			$signatories_to_set[] = $signatories_value;
 		}
-		$this->_signatories = $signatories_to_set;
+		parent::setSignatories($signatories_to_set);
 	}
 
 	// Setter chargé d'affecter le nom de l'application
@@ -86,7 +86,7 @@ class XMailer extends XClass
 		foreach ($recipients as $recipients_key => $recipients_value) {
 			$recipients_to_set[] = $recipients_value;
 		}
-		$this->_recipients = $recipients_to_set;
+    parent::setRecipients($recipients_to_set);
 	}
 
 	private function setHiddenRecipients(array $hiddenRecipients) {
@@ -94,7 +94,7 @@ class XMailer extends XClass
 		foreach ($hiddenRecipients as $hiddenRecipients_key => $hiddenRecipients_value) {
 			$hiddenRecipients_to_set[] = $hiddenRecipients_value;
 		}
-		$this->_hiddenRecipients = $hiddenRecipients_to_set;
+    parent::setHiddenRecipients($hiddenRecipients_to_set);
 	}
 
 	private function setAttachments(array $attachments) {
@@ -102,7 +102,7 @@ class XMailer extends XClass
 		foreach ($attachments as $attachments_key => $attachments_value) {
 			$attachments_to_set[] = $attachments_value;
 		}
-		$this->_attachments = $attachments_to_set;
+    parent::setAttachments($attachments_to_set);
 	}
 
 	private function organizeActors($actors, $domain) {
@@ -111,9 +111,9 @@ class XMailer extends XClass
 		//if (!in_array($domain, $actors_domain)) {	throw new XException('00030005', 4, array( 0 => $domain));	}
 
 		switch ($domain) {
-			case 'signatories':			$current_actors = $this->_signatories;		break;	// Récupération des signatories déjà présents
-			case 'recipients':			$current_actors = $this->_recipients;		break;	// Récupération des recipients déjà présents
-			case 'hiddenRecipients':	$current_actors = $this->_hiddenRecipients;	break;	// Récupération des hiddenRecipients déjà présents
+			case 'signatories':		   $current_actors = $this->signatories();       break;	// Récupération des signatories déjà présents
+			case 'recipients':		   $current_actors = $this->recipients();        break;	// Récupération des recipients déjà présents
+			case 'hiddenRecipients': $current_actors = $this->hiddenRecipients();  break;	// Récupération des hiddenRecipients déjà présents
 		}
 
 		$mails_list = array();		// Création de la liste tampon de mails
@@ -211,7 +211,7 @@ class XMailer extends XClass
 			//	throw new XException('00030007', 4);
 			}
 		}
-		$this->_author = $author_to_set;
+    parent::setAuthor($author_to_set);
 	}
 
 	public function setReplyTo($replyTo) {
@@ -231,11 +231,11 @@ class XMailer extends XClass
 			//	throw new XException('00030007', 4);
 			}
 		}
-		$this->_replyTo = $replyTo_to_set;
+    parent::setReplyTo($replyTo_to_set);
 	}
 
 	public function addSignatory($signatory) {
-	//	$this->organizeActors($signatory, 'signatories');
+		$this->organizeActors($signatory, 'signatories');
 	}
 
 	public function addRecipient($recipient) {
@@ -248,41 +248,42 @@ class XMailer extends XClass
 
 	// Setter chargé d'affecter le nom de l'application
 	public function setSubject($subject) {
-		if (empty($subject) || !is_string($subject)) {	throw new XException('00030001', 4, array( 0 => $subject));	}
-		$this->_subject = decodingDatas($subject);
+		//if (empty($subject) || !is_string($subject)) {	throw new XException('00030001', 4, array( 0 => $subject));	}
+    parent::setSubject(decodingDatas($subject));
 	}
 
 	// Setter chargé d'affecter le BodyHtlm de l'application
 	public function setBodyHtml($bodyHtml, $strict = false) {
 
-		if (empty($bodyHtml) || !is_string($bodyHtml)) {	throw new XException('00030002', 4, array( 0 => $bodyHtml));	}
+		//if (empty($bodyHtml) || !is_string($bodyHtml)) {	throw new XException('00030002', 4, array( 0 => $bodyHtml));	}
 
 		if ($strict === true) {
-			$this->_bodyHtml = $bodyHtml;
+      parent::setBodyHtml($bodyHtml);
 		} else {
-			$this->_bodyHtml = decodingDatas($bodyHtml);
+      parent::setBodyHtml(decodingDatas($bodyHtml));
 		}
 	}
 
 	// Setter chargé d'affecter le BodyTxt de l'application
 	public function setBodyTxt($bodyTxt = null, $strict = false) {
 
-		if (!is_string($bodyTxt) && $bodyTxt != null) {	throw new XException('00030003', 4, array( 0 => $bodyTxt));	}
+		//if (!is_string($bodyTxt) && $bodyTxt != null) {	throw new XException('00030003', 4, array( 0 => $bodyTxt));	}
 
 		if ($bodyTxt == null) {
-			$bodyTxt = strip_tags($this->_bodyHtml);
+			$bodyTxt = strip_tags($this->bodyHtml());
 		}
 
 		if ($strict === true) {
-			$this->_bodyTxt = $bodyTxt;
+      parent::setBodyTxt($bodyTxt);
 		} else {
-			$this->_bodyTxt = decodingDatas($bodyTxt);
+      parent::setBodyTxt(decodingDatas($bodyTxt));
 		}
 	}
 
 	public function setSpecificHeaders(array $specificHeaders = null) {
 
-		$appSpecificHeaders = globalConfig('xmailer_specific_headers');
+		//$appSpecificHeaders = globalConfig('xmailer_specific_headers');
+    $appSpecificHeaders = array();
 
 		$specificHeadersToAdd = array();
 
@@ -346,10 +347,10 @@ class XMailer extends XClass
 
 	public function setPriority(int $priority) {
 		switch ($priority) {
-			case 1:		$this->_priority = 1; break;
-			case 3:		$this->_priority = 3; break;
-			case 5:		$this->_priority = 5; break;
-			default:	$this->_priority = 1; break;
+			case 1:		parent::setPriority(1); break;
+			case 3:		parent::setPriority(3); break;
+			case 5:		parent::setPriority(5); break;
+			default:	parent::setPriority(1); break;
 		}
 	}
 
