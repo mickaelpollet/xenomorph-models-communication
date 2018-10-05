@@ -19,17 +19,17 @@ class XMailer extends XClass
 
   // Déclaration des propriétés
   public function setClassProperties() {
-		$this->property('author',          		'XUser');    // URL du service OneSignal à contacter
-    $this->property('replyTo',            'string');    // Clé API de l'application OneSignal
-    $this->property('signatories',        'array');    // ID de l'application OneSignal à contacter
-    $this->property('recipients',         'array');     // Segments OneSignal d'utilisateurs à contacter. Doivent être paramétrés sur OneSignal
-    $this->property('hiddenRecipients',   'array');     // Filtres spécifiques à contacter
-    $this->property('subject',            'string');    // Titre de la notification
-    $this->property('bodyHtml',           'string');    // Sous-titre de la notification
-    $this->property('bodyTxt',            'string');    // Message de la notification
-    $this->property('attachments',        'string');     // Message de la notification
-		$this->property('specificHeaders',    'string');     // Message de la notification
-		$this->property('priority',           'integer');     // Message de la notification
+		$this->property('author',          		'XUser');    // Auteur du mail
+    $this->property('replyTo',            'string');   // Adresse de réponse du mail si celle-ci est différente de l'auteur original
+    $this->property('signatories',        'array');    // Tableau des XUsers destinataires. Il faut utiliser la méthode 'addSignatory' pour ajouter un ou plusieurs destinataires
+    $this->property('recipients',         'array');    // Tableau des XUsers destinataires en copie. Il faut utiliser la méthode 'addRecipient' pour ajouter un ou plusieurs destinataires
+    $this->property('hiddenRecipients',   'array');    // Tableau des XUsers destinataires en copie cachés. Il faut utiliser la méthode 'addHiddenRecipient' pour ajouter un ou plusieurs destinataires
+    $this->property('subject',            'string');   // Objet du mail
+    $this->property('bodyHtml',           'string');   // Version HTML du corps du mail
+    $this->property('bodyTxt',            'string');   // Version texte du corps du mail
+    $this->property('attachments',        'string');   // Pièces jointes du mail
+		$this->property('specificHeaders',    'string');   // Header spécifiques à ajouter à l'envoi du mail
+		$this->property('priority',           'integer');  // Importance de priorité du mail
   }
 
 /**********************************************************/
@@ -42,7 +42,7 @@ class XMailer extends XClass
 /********************************************************/
 
 	public function __construct(array $mailer_datas = array()) {	// Constructeur dirigé vers la méthode d'hydratation
-		parent::__construct();
+		parent::__construct($mailer_datas);
 		$this->setSpecificHeaders();
 	}
 
@@ -71,7 +71,7 @@ class XMailer extends XClass
 /***************************************************/
 
 	/***************** SETTERS PRIVES *****************/
-	// Setter chargé d'affecter le nom de l'application
+	// Setter chargé d'affecter le tableau des destinataires du mail
 	private function setSignatories(array $signatories) {
 		$signatories_to_set = array();
 		foreach ($signatories as $signatories_key => $signatories_value) {
@@ -89,6 +89,7 @@ class XMailer extends XClass
     parent::setRecipients($recipients_to_set);
 	}
 
+  // Setter chargé d'affecter le nom de l'application
 	private function setHiddenRecipients(array $hiddenRecipients) {
 		$hiddenRecipients_to_set = array();
 		foreach ($hiddenRecipients as $hiddenRecipients_key => $hiddenRecipients_value) {
@@ -246,7 +247,19 @@ class XMailer extends XClass
 		$this->organizeActors($hiddenRecipient, 'hiddenRecipients');
 	}
 
-	// Setter chargé d'affecter le nom de l'application
+  public function setSignatory($signatory) {
+    $this->addSignatory($signatory);
+  }
+
+  public function setRecipient($recipient) {
+    $this->addRecipient($recipient);
+  }
+
+  public function setHiddenRecipient($hiddenRecipient) {
+    $this->addHiddenRecipient($hiddenRecipient);
+  }
+
+  // Setter chargé d'affecter le nom de l'application
 	public function setSubject($subject) {
 		//if (empty($subject) || !is_string($subject)) {	throw new XException('00030001', 4, array( 0 => $subject));	}
     parent::setSubject(decodingDatas($subject));
@@ -274,11 +287,16 @@ class XMailer extends XClass
 		}
 
 		if ($strict === true) {
-      parent::setBodyTxt($bodyTxt);
+      parent::setBodyTxt(securiseDatas($bodyTxt));
 		} else {
-      parent::setBodyTxt(decodingDatas($bodyTxt));
+      parent::setBodyTxt(securiseDatas(decodingDatas($bodyTxt)));
 		}
 	}
+
+  public function setBody($body = null) {
+    $this->setBodyHtml($body);
+    $this->setBodyTxt($body);
+  }
 
 	public function setSpecificHeaders(array $specificHeaders = null) {
 

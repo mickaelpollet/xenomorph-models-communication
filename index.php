@@ -7,21 +7,16 @@ echo "<h1>XENOMORPH - Models : Communication</h1>";
 
 $TestUser = array();
 $TestUser['author'] = 'pollet.m@mipih.fr';
-$TestUser['signatory'] = 'mickaelpollet@gmail.com';
 $TestUser['subject'] = 'test subject';
-$TestUser['body'] = 'test body';
+$TestUser['body'] = '<p>test body</p>';
+$TestUser['signatory'] = 'mickaelpollet@gmail.com';
 
-var_dump($TestUser);
+$TestMailer = new XMailer($TestUser);
 
-$TestMailer = new XMailer();
+//$TestMailer->addSignatory('mickaelpollet@gmail.com');
 
-$TestMailer->setAuthor($TestUser['author']);
-$TestMailer->addSignatory($TestUser['signatory']);
-$TestMailer->setSubject($TestUser['subject']);
-$TestMailer->setBody($TestUser['body']);
-
+//$TestMailer->send();
 
 var_dump($TestMailer);
-
 
 ?>

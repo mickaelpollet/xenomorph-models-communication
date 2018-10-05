@@ -8,7 +8,7 @@
 //require_once(SITE_ROOT.LIBS_DIR.'PHPMailer-master/class.phpmailer.php');
 //require_once(SITE_ROOT.LIBS_DIR.'PHPMailer-master/class.smtp.php');
 
-class XMailerManager
+class XMailerManager extends XClassManager
 {
 /******************************************************/
 /*****************     PARAMETRES     *****************/
@@ -44,7 +44,7 @@ class XMailerManager
 /*********************     FONCTIONS     ********************/
 /************************************************************/
 
-public function send(XMailer $XMail, $debug = 0) {
+public function send(XMailer $XMail = null, $debug = 0) {
 
     try {
 

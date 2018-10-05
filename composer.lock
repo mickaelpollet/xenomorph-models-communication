@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "ef62353d0720e0b111e1573accac22c1d84e2067"
+                "reference": "a8dce4721d2a491c702ecd6cfd6de26c867a67fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/ef62353d0720e0b111e1573accac22c1d84e2067",
-                "reference": "ef62353d0720e0b111e1573accac22c1d84e2067",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/a8dce4721d2a491c702ecd6cfd6de26c867a67fc",
+                "reference": "a8dce4721d2a491c702ecd6cfd6de26c867a67fc",
                 "shasum": ""
             },
             "require": {
@@ -70,7 +70,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2018-05-28T16:11:23+00:00"
+            "time": "2018-10-02T17:09:29+00:00"
         },
         {
             "name": "twbs/bootstrap",
@@ -78,12 +78,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "2c2ac3356425e192f7537227508c809a14aa5850"
+                "reference": "4ebe2b8753ad82ecb5e07c89f9492e9934b531b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/2c2ac3356425e192f7537227508c809a14aa5850",
-                "reference": "2c2ac3356425e192f7537227508c809a14aa5850",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/4ebe2b8753ad82ecb5e07c89f9492e9934b531b5",
+                "reference": "4ebe2b8753ad82ecb5e07c89f9492e9934b531b5",
                 "shasum": ""
             },
             "replace": {
@@ -92,7 +92,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3.x-dev"
+                    "dev-master": "3.4.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -121,7 +121,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2017-10-04T07:51:34+00:00"
+            "time": "2018-09-28T06:53:59+00:00"
         },
         {
             "name": "xenomorph/xenomorph-system-core",
@@ -129,12 +129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mickaelpollet/xenomorph-system-core.git",
-                "reference": "d6c50af110d83dc20cdf887e0a1e09b841082ac2"
+                "reference": "9d92e86e4100f4a1f08817fd2f9e5f0b32f79d1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mickaelpollet/xenomorph-system-core/zipball/d6c50af110d83dc20cdf887e0a1e09b841082ac2",
-                "reference": "d6c50af110d83dc20cdf887e0a1e09b841082ac2",
+                "url": "https://api.github.com/repos/mickaelpollet/xenomorph-system-core/zipball/9d92e86e4100f4a1f08817fd2f9e5f0b32f79d1d",
+                "reference": "9d92e86e4100f4a1f08817fd2f9e5f0b32f79d1d",
                 "shasum": ""
             },
             "require": {
@@ -163,7 +163,7 @@
                 "php freamwork",
                 "xenomorph"
             ],
-            "time": "2018-05-29T09:43:48+00:00"
+            "time": "2018-10-05T13:31:02+00:00"
         }
     ],
     "packages-dev": [],
